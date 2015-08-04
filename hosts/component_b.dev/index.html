@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html style="background-color: #eee">
+<script src="http://okrajs.github.io/Okrajs/okra.js"></script>
+
+<h1>Component B</h1>
+<code>secret = </code>
+<input id="value" placeholder="Trying to get it..." />
+
+<script>
+
+var integrator = Okra.inlet(
+    '_parent',
+    'http://integrator.dev:3002'
+);
+
+integrator.get('secret', function (value) {
+    document.querySelector('#value').value = value;
+});
+
+window.addEventListener('message', function (event) {
+    console.log(location.href, 'received a message', event.data, 'from:', event.origin);
+}, false);
+
+window.parent.postMessage({
+    'type': 'request',
+    'name': 'secret',
+    'action': 'get',
+    'nounce': '1234',
+}, 'http://integrator.dev:3002');
+
+</script>
+</html>
+

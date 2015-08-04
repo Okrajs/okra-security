@@ -1,0 +1,10 @@
+node_modules
+dist
+.tmp
+/.idea
+/nbproject
+*.css.map
+*~
+npm-debug.log
+
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<h1>Integrator</h1>
+<iframe name="component_a" src="http://component_a.dev:8501/"></iframe>
+<br />
+<br />
+<iframe name="component_b" src="http://component_b.dev:8502/"></iframe>
+<script src="http://okrajs.github.io/Okrajs/okra.js"></script>
+<script>
+
+Okra.provide('get', 'secret', function () {
+    return 'I am so secret';
+}).allow('http://component_a.dev:8501');
+
+</script>
+</html>
+
